@@ -1,11 +1,13 @@
 package com.example.learn.Service;
 
 import com.example.learn.Model.student.Student;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 
+@Service
 public class StudentService {
     public List<Student> getStudents() {
         return List.of(
