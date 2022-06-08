@@ -1,6 +1,7 @@
 package com.example.learn.Controller;
 
 import com.example.learn.Model.student.Student;
+import com.example.learn.Service.StudentService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,10 +14,15 @@ import java.util.List;
 @RequestMapping(path = "api/v1/student")
 public class StudentController {
 
+	private final StudentService studentService;
+
+	public StudentController(StudentService studentService){
+		this.studentService = studentService;
+	}
+
     @GetMapping
 	public List<Student> getStudents() {
-		return List.of(
-				new Student(1L, "Hafiz", "hafizxus@gmail.com", LocalDate.of(1998, Month.AUGUST, 26), 24)
-		);
+		return studentService.getStudents();
+
 	}
 }
